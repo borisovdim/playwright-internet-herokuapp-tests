@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.only('Login codegen test', async ({ page }) => {
+test('Login codegen test', async ({ page }) => {
   await page.goto('https://the-internet.herokuapp.com/login');
   await page.getByRole('textbox', { name: 'Username' }).click();
   await page.getByRole('textbox', { name: 'Username' }).fill('tomsmith');
