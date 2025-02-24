@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { AddRemoveElements } from './page-objects/add-remove-elements.page';
 
-test.describe.only('Add Remove Elements', () => {
+test.describe('Add Remove Elements', () => {
   let addRemoveElementsPage: AddRemoveElements;
 
   test.beforeEach(async ({ page }) => {
