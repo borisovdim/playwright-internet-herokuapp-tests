@@ -1,7 +1,7 @@
 import { Page, expect } from '@playwright/test';
 import { BasePage } from './base.page';
 
-export class Checkboxes {
+export class CheckboxesPage {
   page: Page;
   basePage: BasePage;
 

@@ -9,7 +9,7 @@ test.describe('Hover', () => {
     await hoversPage.open();
   });
 
-  test('Perform hover over user #2', async ({ page }) => {
+  test('Perform hover over user #2', async () => {
     await hoversPage.userAvatar(2).hover();
     await expect(hoversPage.userName('user2')).toBeVisible();
   });

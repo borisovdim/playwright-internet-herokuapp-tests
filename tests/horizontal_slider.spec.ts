@@ -1,11 +1,11 @@
 import { test, expect } from 'playwright/test';
-import { HorizontalSlider } from './page-objects/horizontal_slider.page';
+import { HorizontalSliderPage } from './page-objects/horizontal_slider.page';
 
 test.describe('Horizontal Slider', () => {
-  let horizontalSlider: HorizontalSlider;
+  let horizontalSlider: HorizontalSliderPage;
 
   test.beforeEach(async ({ page }) => {
-    horizontalSlider = new HorizontalSlider(page);
+    horizontalSlider = new HorizontalSliderPage(page);
     await horizontalSlider.open();
   });
 

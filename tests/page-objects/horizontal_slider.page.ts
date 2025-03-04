@@ -1,7 +1,7 @@
 import { Page } from '@playwright/test';
 import { BasePage } from './base.page';
 
-export class HorizontalSlider {
+export class HorizontalSliderPage {
   page: Page;
   basePage: BasePage;
 

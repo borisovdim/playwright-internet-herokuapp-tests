@@ -1,11 +1,11 @@
 import { test, expect } from '@playwright/test';
-import { AddRemoveElements } from './page-objects/add-remove-elements.page';
+import { AddRemoveElementsPage } from './page-objects/add-remove-elements.page';
 
 test.describe('Add Remove Elements', () => {
-  let addRemoveElementsPage: AddRemoveElements;
+  let addRemoveElementsPage: AddRemoveElementsPage;
 
   test.beforeEach(async ({ page }) => {
-    addRemoveElementsPage = new AddRemoveElements(page);
+    addRemoveElementsPage = new AddRemoveElementsPage(page);
     await addRemoveElementsPage.open();
   });
 

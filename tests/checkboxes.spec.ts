@@ -1,11 +1,11 @@
 import { test, expect } from '@playwright/test';
-import { Checkboxes } from './page-objects/checkboxes.page';
+import { CheckboxesPage } from './page-objects/checkboxes.page';
 
 test.describe('Check checkboxes', () => {
-  let checkboxPage: Checkboxes;
+  let checkboxPage: CheckboxesPage;
 
   test.beforeEach(async ({ page }) => {
-    checkboxPage = new Checkboxes(page);
+    checkboxPage = new CheckboxesPage(page);
     await checkboxPage.open();
   });
 
