@@ -15,7 +15,7 @@ test.describe('Horizontal Slider', () => {
     await expect(parseFloat(await horizontalSlider.counterValue())).toEqual(1.5);
   });
 
-  test.only('Click slider more times than max range', async () => {
+  test('Click slider more times than max range', async () => {
     await horizontalSlider.moveSliderByArrow(11);
     await expect(parseFloat(await horizontalSlider.counterValue())).toEqual(5);
   });

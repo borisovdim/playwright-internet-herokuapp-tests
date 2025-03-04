@@ -10,10 +10,9 @@ export class HoversPage {
     this.basePage = new BasePage(page);
   }
 
-  // image = () => this.page.locator('.figure');
-  userAvatar = () => this.page.getByAltText('User Avatar');
-  userName = (number) => this.page.locator(`h5:has-text('name: user${number}')`);
-  viewProfileLink = () => this.page.getByRole('link', {name: 'View profile'}})
+  userAvatar = (number) => this.page.getByAltText('User Avatar').nth(number - 1);
+  userName = (name) => this.page.locator(`h5:has-text('name: ${name}')`);
+  viewProfileLink = () => this.page.getByRole('link', { name: 'View profile' });
 
   async open() {
     this.basePage.goto('hovers');
