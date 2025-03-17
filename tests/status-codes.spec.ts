@@ -10,7 +10,7 @@ test.describe('Status Codes', () => {
   });
 
   [200, 301, 404, 500].forEach(statusCode => {
-    test.only(`'Check response status code equals ${statusCode}'`, async ({ page }) => {
+    test(`'Check response status code equals ${statusCode}'`, async ({ page }) => {
       const responsePromise = page.waitForResponse(`/status_codes/${statusCode}`);
       await statusCodesPage.statusLink(`${statusCode}`).click();
       const response = await responsePromise;
