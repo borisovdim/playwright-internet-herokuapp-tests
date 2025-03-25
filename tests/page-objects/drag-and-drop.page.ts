@@ -1,18 +1,19 @@
 import { Page } from '@playwright/test';
 import { BasePage } from './base.page';
 
-export class StatusCodesPage {
+export class DragAndDropPage {
   readonly page: Page;
   readonly basePage: BasePage;
 
-  constructor(page: Page) {
+  constructor(page) {
     this.page = page;
     this.basePage = new BasePage(page);
   }
 
-  statusLink = (status) => this.page.getByRole('link', { name: `${status}` });
+  aElement = () => this.page.locator('#column-a');
+  bElement = () => this.page.locator('#column-b');
 
   async open() {
-    this.basePage.goto('status_codes');
+    this.basePage.goto('drag_and_drop');
   }
 }

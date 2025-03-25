@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { GeolocationPage } from './page-objects/geolocation.page';
 
-test.describe.only('Geolocation', () => {
+test.describe('Geolocation', () => {
   let geolocationPage: GeolocationPage;
 
   test.beforeEach(async ({ page }) => {

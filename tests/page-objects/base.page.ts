@@ -1,7 +1,7 @@
 import { Page } from '@playwright/test';
 
 export class BasePage {
-  page: Page;
+  readonly page: Page;
 
   constructor(page: Page) {
     this.page = page;
@@ -15,6 +15,5 @@ export class BasePage {
     await this.page.reload({ waitUntil: 'networkidle' });
 
     // await this.page.evaluate(() => location.reload());
-
   }
 }

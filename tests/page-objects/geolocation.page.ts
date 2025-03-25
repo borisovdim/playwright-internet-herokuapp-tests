@@ -2,8 +2,8 @@ import { Page } from '@playwright/test';
 import { BasePage } from './base.page';
 
 export class GeolocationPage {
-  page: Page;
-  basePage: BasePage;
+  readonly page: Page;
+  readonly basePage: BasePage;
 
   constructor(page: Page) {
     this.page = page;
