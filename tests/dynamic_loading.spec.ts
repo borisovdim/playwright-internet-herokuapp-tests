@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { DynamicLoadingPage } from './page-objects/dynamic_loading.page';
 import { BasePage } from './page-objects/base.page';
 
-test.describe.only('Dynamic Loading Page', () => {
+test.describe('Dynamic Loading Page', () => {
   let dynamicLoadingPage: DynamicLoadingPage;
 
   test.beforeEach(async ({ page }) => {

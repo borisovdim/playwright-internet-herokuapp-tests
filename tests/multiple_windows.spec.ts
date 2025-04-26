@@ -14,7 +14,7 @@ test.describe('Multiple Windows', () => {
       context.waitForEvent('page'), 
       multipleWindowsPage.openNewPage()
     ]);
-    newPage.waitForLoadState();
+    await newPage.waitForLoadState();
     expect(newPage.url()).toContain('windows/new');
   });
 });
