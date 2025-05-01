@@ -27,10 +27,15 @@ export class GeolocationPage {
 
   async openOnGoogleMaps() {
     await this.mapLink().click();
-    const rejectButton = this.rejectGoogleButton();
-    await rejectButton.scrollIntoViewIfNeeded();
-    if (await rejectButton.isVisible({ timeout: 5000 })) {
-      await rejectButton.click();
+    await this.page.waitForEvent('domcontentloaded');
+  
+    const rejectButtonLocator = this.rejectGoogleButton();
+  
+    if (await rejectButtonLocator.count() > 0) {
+      await rejectButtonLocator.scrollIntoViewIfNeeded();
+      if (await rejectButtonLocator.isVisible({ timeout: 5000 })) {
+        await rejectButtonLocator.click();
+      }
     }
   }
 }
