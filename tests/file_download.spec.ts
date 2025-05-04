@@ -1,10 +1,19 @@
-import { test, expect } from '@playwright/test';
-import { FileDownloaderPage } from './page-objects/file_download.page';
-import { join } from 'path';
+import { expect, test } from '@playwright/test';
 import { existsSync, readFileSync } from 'fs';
+import { join } from 'path';
+import { FileDownloaderPage } from './page-objects/file_download.page';
+import { uploadFileViaApi } from './utils/fileUploaderHelper';
+
+const filesToUpload = ['cypresslogo.png', 'dummy.txt'];
 
 test.describe('File Downloader', () => {
   let fileDownloaderPage: FileDownloaderPage;
+
+  test.beforeAll(async () => {
+    for (const file of filesToUpload) {
+      uploadFileViaApi(file);
+    }
+  });
 
   test.beforeEach(async ({ page }) => {
     fileDownloaderPage = new FileDownloaderPage(page);
@@ -16,7 +25,7 @@ test.describe('File Downloader', () => {
   });
 
   test('Download png file', async () => {
-    const fileName = 'cypresslogo.png';
+    const fileName = filesToUpload[0];
     const downloadPath = join(__dirname, 'download', fileName);
 
     await fileDownloaderPage.downloadFile(fileName, downloadPath);
@@ -25,7 +34,7 @@ test.describe('File Downloader', () => {
   });
 
   test('Download txt file and check content', async () => {
-    const fileName = 'dummy.txt';
+    const fileName = filesToUpload[1];
     const downloadPath = join(__dirname, 'download', fileName);
 
     await fileDownloaderPage.downloadFile(fileName, downloadPath);
