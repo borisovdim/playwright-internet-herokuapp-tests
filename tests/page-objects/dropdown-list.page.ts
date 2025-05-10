@@ -5,9 +5,9 @@ export class DropdownListPage {
   readonly page: Page;
   readonly basePage: BasePage;
 
-  constructor(page: Page) {
+  constructor(page: Page, basePage: BasePage) {
     this.page = page;
-    this.basePage = new BasePage(page);
+    this.basePage = basePage;
   }
 
   dropdown = () => this.page.locator('#dropdown');

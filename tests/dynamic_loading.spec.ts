@@ -1,16 +1,13 @@
-import { expect, test } from '@playwright/test';
-import { DynamicLoadingPage } from './page-objects/dynamic_loading.page';
+import { test, expect } from './fixture/base.fixture';
 import { BasePage } from './page-objects/base.page';
 
 test.describe('Dynamic Loading Page', () => {
-  let dynamicLoadingPage: DynamicLoadingPage;
 
-  test.beforeEach(async ({ page }) => {
-    dynamicLoadingPage = new DynamicLoadingPage(page);
+  test.beforeEach(async ({ dynamicLoadingPage }) => {
     await dynamicLoadingPage.open();
   });
 
-  test('Element on page that is hidden', async ({ page }) => {
+  test('Element on page that is hidden', async ({ page, dynamicLoadingPage }) => {
     await dynamicLoadingPage.openNewPage_1();
     await expect(page).toHaveURL(/dynamic_loading\/1/);
     await dynamicLoadingPage.startLoading();
@@ -20,7 +17,7 @@ test.describe('Dynamic Loading Page', () => {
     await expect(dynamicLoadingPage.infoText()).toBeVisible();
   });
 
-  test('Element rendered after the fact', async ({ page }) => {
+  test('Element rendered after the fact', async ({ page, dynamicLoadingPage }) => {
     await dynamicLoadingPage.openNewPage_2();
     await expect(page).toHaveURL(/dynamic_loading\/2/);
     await dynamicLoadingPage.startLoading();

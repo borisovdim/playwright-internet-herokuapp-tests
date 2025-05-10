@@ -1,30 +1,27 @@
-import { test, expect } from '@playwright/test';
-import { CheckboxesPage } from './page-objects/checkboxes.page';
+import { test, expect } from './fixture/base.fixture';
 
 test.describe('Check checkboxes', () => {
-  let checkboxPage: CheckboxesPage;
 
-  test.beforeEach(async ({ page }) => {
-    checkboxPage = new CheckboxesPage(page);
+  test.beforeEach(async ({checkboxPage}) => {
     await checkboxPage.open();
   });
 
-  test('Check all checkboxes', async () => {
+  test('Check all checkboxes', async ({checkboxPage}) => {
     await checkboxPage.checkAll();
     await checkboxPage.areAllChecked()
   });
 
-  test('Uncheck all checkboxes', async () => {
+  test('Uncheck all checkboxes', async ({checkboxPage}) => {
     await checkboxPage.unCheckAll();
     await checkboxPage.areAllUnChecked();
   });
 
-  test('Check first checkbox', async () => {
+  test('Check first checkbox', async ({checkboxPage}) => {
     await checkboxPage.checkCheckbox(0);
     await expect(checkboxPage.checkbox().nth(0)).toBeChecked();
   });
 
-  test('Uncheck second checkbox', async () => {
+  test('Uncheck second checkbox', async ({checkboxPage}) => {
     await checkboxPage.checkCheckbox(1);
     await expect(checkboxPage.checkbox().nth(1)).not.toHaveAttribute('checked');
   });

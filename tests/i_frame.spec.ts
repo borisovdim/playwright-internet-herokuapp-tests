@@ -1,15 +1,12 @@
-import { test, expect } from '@playwright/test';
-import { IFramePage } from './page-objects/frame.page';
+import { expect, test } from './fixture/base.fixture';
 
 test.describe('iFrame', () => {
-  let iFramePage: IFramePage;
 
-  test.beforeEach(async ({ page }) => {
-    iFramePage = new IFramePage(page);
+  test.beforeEach(async ({ iFramePage }) => {
     await iFramePage.open();
   });
 
-  test('Check iframe body', async () => {
+  test('Check iframe body', async ({ iFramePage }) => {
     await iFramePage.closeAlertButton().click();
     const contentArea = await iFramePage.contentArea();
     if (!contentArea) {

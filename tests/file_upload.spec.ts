@@ -1,15 +1,12 @@
-import { expect, test } from '@playwright/test';
-import { FileUploaderPage } from './page-objects/file_upload.page';
+import { test, expect } from './fixture/base.fixture';
 
 test.describe('File Uploader', () => {
-  let fileUploaderPage: FileUploaderPage;
 
-  test.beforeEach(async ({ page }) => {
-    fileUploaderPage = new FileUploaderPage(page);
+  test.beforeEach(async ({ fileUploaderPage }) => {
     await fileUploaderPage.open();
   });
 
-  test('Upload file', async () => {
+  test('Upload file', async ({ fileUploaderPage }) => {
     const fileName = 'dummy_2.txt';
     await fileUploaderPage.uploadFile(fileName);
     await expect(fileUploaderPage.message()).toContainText('File Uploaded!');

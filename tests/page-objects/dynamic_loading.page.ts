@@ -1,13 +1,13 @@
-import { Page, expect } from '@playwright/test';
+import { Page } from '@playwright/test';
 import { BasePage } from './base.page';
 
 export class DynamicLoadingPage {
   readonly page: Page;
   readonly basePage: BasePage;
 
-  constructor(page: Page) {
+  constructor(page: Page, basePage: BasePage) {
     this.page = page;
-    this.basePage = new BasePage(page);
+    this.basePage = basePage;
   }
 
   link_1 = () => this.page.getByRole('link', { name: /Example 1/ });

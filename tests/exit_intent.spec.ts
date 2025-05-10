@@ -1,15 +1,12 @@
-import { test, expect } from '@playwright/test';
-import { ExitIntentPage } from './page-objects/exit_intent.page';
+import { test, expect } from './fixture/base.fixture';
 
 test.describe('Exit Intent', () => {
-  let exitIntentPage: ExitIntentPage;
 
-  test.beforeEach(async ({ page }) => {
-    exitIntentPage = new ExitIntentPage(page);
+  test.beforeEach(async ({ exitIntentPage }) => {
     await exitIntentPage.open();
   });
 
-  test('Get modal window', async () => {
+  test('Get modal window', async ({ exitIntentPage }) => {
     await exitIntentPage.moveOutOfWindow();
     await expect(exitIntentPage.modalWindowTitle()).toContainText(/This is a modal window/i);
     await exitIntentPage.closeModalWindow();

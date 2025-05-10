@@ -5,9 +5,9 @@ export class MultipleWindowsPage {
   readonly page: Page;
   readonly basePage: BasePage;
 
-  constructor(page) {
+  constructor(page: Page, basePage: BasePage) {
     this.page = page;
-    this.basePage = new BasePage(page);
+    this.basePage = basePage;
   }
 
   linkToNewPage = () => this.page.getByRole('link', { name: 'Click Here' });
